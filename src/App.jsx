@@ -5,6 +5,7 @@ import Login from "./core/login/Login";
 import CreateProject from "./core/createproject/CreateProject";
 import Register from "./core/register/Register";
 import Profile from "./core/profile/Profile";
+import EditProfile from "./core/profile/editProfile/EditProfile";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/editProfile" element={<EditProfile />} />
         </Routes>
       </Box>
     </>

@@ -2,8 +2,6 @@ import {
   Typography,
   Card,
   CardHeader,
-  Box,
-  Button,
   CardContent,
   Divider,
 } from "@mui/material";
@@ -11,6 +9,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import UserSkills from "./UserSkills";
 import UserCompletedProjects from "./UserCompletedProjects";
 import UserCreatedProjects from "./UserCreatedProjects";
+import { Link } from "react-router-dom";
 
 function ProfileCard() {
   return (
@@ -18,9 +17,9 @@ function ProfileCard() {
       <CardHeader
         title={"Nombre de la persona"}
         action={
-          <Button>
+          <Link to="editProfile">
             <EditIcon fontSize="medium" color="primary" />{" "}
-          </Button>
+          </Link>
         }
       />
       <CardContent>

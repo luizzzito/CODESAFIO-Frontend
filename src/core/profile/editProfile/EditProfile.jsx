@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
-import ProfileCard from "./ProfileCard";
+import React from "react";
+import EditProfileCard from "./EditProfileCard";
 
-function Profile() {
+function EditProfile() {
   return (
     <Box
       sx={{
@@ -10,12 +11,12 @@ function Profile() {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
-      <ProfileCard />
+      <EditProfileCard />
     </Box>
   );
 }
 
-export default Profile;
+export default EditProfile;
