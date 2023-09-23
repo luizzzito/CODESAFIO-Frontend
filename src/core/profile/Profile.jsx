@@ -1,0 +1,21 @@
+import { Box, Typography, Card, CardHeader } from "@mui/material";
+import ProfileCard from "./ProfileCard";
+
+function Profile() {
+  return (
+    <Box
+      sx={{
+        backgroundImage: "linear-gradient(180deg, #42D2B8 0%, #425DD2 83.36%)",
+        minwidth: "100vw",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}
+    >
+      <ProfileCard />
+    </Box>
+  );
+}
+
+export default Profile;
