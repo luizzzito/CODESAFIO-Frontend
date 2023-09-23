@@ -18,6 +18,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  
+  // Objeto con todos las secciones del navbar/sidebar
   const navLinks = [
     {
       title: "Home",
