@@ -7,6 +7,7 @@ import Register from "./core/register/Register";
 import ModalPopup from "./core/components/ModalPopup";
 import Profile from "./core/profile/Profile";
 import HomePage from "./core/homepage/HomePage";
+import EditProfile from "./core/profile/editProfile/EditProfile";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/register" element={<Register />} />
           <Route path="/create-project/confirm" element={<ModalPopup />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/homepage" element={<HomePage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/editProfile" element={<EditProfile />} />
         </Routes>
       </Box>
     </>
