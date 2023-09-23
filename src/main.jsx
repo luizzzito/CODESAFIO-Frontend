@@ -11,10 +11,22 @@ const theme = createTheme({
   palette: {
     type: "light",
     primary: {
-      main: "#ff0052",
+      main: "#42a4d2",
     },
-    secondary: {
-      main: "#f50057",
+    complementary: {
+      main: "#d27042",
+    },
+    analogous: {
+      main: "#42d2b8",
+    },
+    analogous2: {
+      main: "#425dd2",
+    },
+    triadic: {
+      main: "#7042d2",
+    },
+    triadic2: {
+      main: "#d242a5",
     },
     info: {
       main: "#ffe200",

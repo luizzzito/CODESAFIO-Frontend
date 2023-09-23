@@ -1,9 +1,22 @@
+import {
+  Button,
+  Box,
+  FormControl,
+  Input,
+  InputLabel,
+  FormHelperText,
+} from "@mui/material";
+
+import Navbar from "./core/components/Navbar";
+
 function App() {
   return (
     <>
-      <p>Hola Papa</p>
+      <Box sx={{ bgcolor: "white" }}>
+        <Navbar />
+      </Box>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
