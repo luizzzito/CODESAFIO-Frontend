@@ -1,5 +1,5 @@
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState } from "react";
 
@@ -33,8 +33,13 @@ function LoginForm() {
         variant="contained"
         loading={loading}
         color="triadic"
-        sx={{width:"80%", mt: 4, py: 1.2,borderRadius:"5px" ,color:"white" }}
-        
+        sx={{
+          width: "80%",
+          mt: 4,
+          py: 1.2,
+          borderRadius: "5px",
+          color: "white",
+        }}
       >
         Iniciar Sesión
       </LoadingButton>
