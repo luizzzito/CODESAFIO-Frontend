@@ -26,11 +26,12 @@ function Login() {
           width: { xs: "100vw", md: 500 },
         }}
       >
-        <Typography variant="h6" component="h1" sx={{ fontWeight: "bold" }}>
+        <Typography variant="h6" component="h1" sx={{ fontWeight: "bold", fontSize:24, color:"#3D405B"
+       }}>
           Ingresa en tu cuenta
         </Typography>
         <LoginForm />
-        <Typography variant="h5" sx={{ fontSize: 16 }}>
+        <Typography variant="h5" sx={{ fontSize: 16, color:"#3D405B" }}>
           ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
         </Typography>
       </Container>

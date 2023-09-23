@@ -21,11 +21,11 @@ function LoginForm() {
       component="form"
       onSubmit={handleSubmit}
     >
-      <TextField label="Correo" variant="standard" sx={{ width: "60%" }} />
+      <TextField label="Correo" variant="standard" sx={{ width: "70%" }} />
       <TextField
         label="Contraseña"
         variant="standard"
-        sx={{ width: "60%" }}
+        sx={{ width: "70%" }}
         fullWidth={true}
       />
       <LoadingButton
