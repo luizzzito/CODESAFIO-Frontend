@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./core/login/Login";
 import CreateProject from "./core/createproject/CreateProject";
 import Register from "./core/register/Register";
+import ModalPopup from "./core/components/ModalPopup";
+import Profile from "./core/profile/Profile";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/create-project/confirm" element={<ModalPopup />} />
+          <Route path="/profile" element={<Profile/>} />
         </Routes>
       </Box>
     </>
