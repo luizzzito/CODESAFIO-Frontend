@@ -21,19 +21,20 @@ function LoginForm() {
       component="form"
       onSubmit={handleSubmit}
     >
-      <TextField label="Correo" variant="standard" sx={{ width: "80%" }} />
+      <TextField label="Correo" variant="standard" sx={{ width: "60%" }} />
       <TextField
         label="Contraseña"
         variant="standard"
-        sx={{ width: "80%" }}
+        sx={{ width: "60%" }}
         fullWidth={true}
       />
       <LoadingButton
         type="submit"
         variant="contained"
         loading={loading}
-        sx={{ mt: 3, py: 1.2 }}
-        fullWidth={true}
+        color="triadic"
+        sx={{width:"80%", mt: 4, py: 1.2,borderRadius:"5px" ,color:"white" }}
+        
       >
         Iniciar Sesión
       </LoadingButton>
