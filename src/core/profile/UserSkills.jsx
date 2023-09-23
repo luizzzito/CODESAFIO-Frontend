@@ -3,13 +3,22 @@ import React from "react";
 import Skill from "../components/Skill";
 
 function UserSkills() {
-  const skills = ["front", "back", "uxDesigner", "front", "back", "uxDesigner"];
+  const skills = [
+    "front",
+    "back",
+    "uxDesigner",
+    "frontend",
+    "backend",
+    "uxDesignerend",
+  ];
   return (
     <Box>
-      <Typography>Habilidades</Typography>
+      <Typography sx={{ mb: 1, fontSize: 18 }} variant="h6">
+        Habilidades
+      </Typography>
       <Grid container spacing={1}>
         {skills.map((skill) => {
-          return <Skill skill={skill} />;
+          return <Skill key={skill} skill={skill} />;
         })}
       </Grid>
     </Box>
