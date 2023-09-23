@@ -4,7 +4,6 @@ const initialState = {
   userInfo: {},
   userToken: null,
   success: false,
-  error: null,
 };
 
 //Creacion del estado
@@ -14,17 +13,16 @@ const authSlice = createSlice({
   reducers: {
     // El 'reducer' de login, establece que el inicio de sesion fue exitoso
     login: (state, { payload }) => {
-      const { user, token } = payload.item;
-      state.success = true;
+      const { user, token } = payload;
       state.userInfo = user;
       state.userToken = token;
+      state.success = true;
     },
     // El 'reducer' de logout, establece el cierre de sesion, colocando los valores iniciales
     logout: (state, _) => {
-      state.success = false;
       state.userInfo = {};
       state.userToken = null;
-      state.error = null;
+      state.success = false;
     },
   },
 });

@@ -1,14 +1,44 @@
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { login } from "../../services/auth.services";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {login as loginState} from "../../features/auth/authSlice"
 
 function LoginForm() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Hola");
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const state = useSelector((state) => state.auth);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      console.log(user)
+      const data = await login(user);
+      console.log(data)
+      if(!data.message){
+        dispatch(loginState(data))
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    if (state.success === true) navigate("/homepage");
+  }, [state.success, navigate]);
+
   return (
     <Box
       sx={{
@@ -21,12 +51,21 @@ function LoginForm() {
       component="form"
       onSubmit={handleSubmit}
     >
-      <TextField label="Correo" variant="standard" sx={{ width: "70%" }} />
+      <TextField
+        label="Correo"
+        name="email"
+        variant="standard"
+        sx={{ width: "70%" }}
+        onChange={handleChange}
+      />
       <TextField
         label="Contraseña"
+        type="password"
+        name="password"
         variant="standard"
         sx={{ width: "70%" }}
         fullWidth={true}
+        onChange={handleChange}
       />
       <LoadingButton
         type="submit"

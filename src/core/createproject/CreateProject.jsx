@@ -42,6 +42,7 @@ const CreateProject = () => {
             variant="outlined"
             fullWidth
             rows={4}
+            multiline
           />
           <InputLabel id="demo-simple-select-label">Dificultad del Proyecto</InputLabel>
           <Select

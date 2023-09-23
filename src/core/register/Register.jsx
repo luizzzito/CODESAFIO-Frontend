@@ -33,7 +33,7 @@ function Register() {
         </Typography>
         <RegisterForm />
         <Typography variant="h5" sx={{ fontSize: 16, mt: 2 }}>
-          ¿Ya tienes cuenta? <Link to="/register">Inicia Sesión</Link>
+          ¿Ya tienes cuenta? <Link to="/login">Inicia Sesión</Link>
         </Typography>
       </Container>
     </>

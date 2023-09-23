@@ -1,4 +1,4 @@
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
 import Navbar from "./core/components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Login from "./core/login/Login";
@@ -6,6 +6,7 @@ import CreateProject from "./core/createproject/CreateProject";
 import Register from "./core/register/Register";
 import ModalPopup from "./core/components/ModalPopup";
 import Profile from "./core/profile/Profile";
+import HomePage from "./core/homepage/HomePage";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/register" element={<Register />} />
           <Route path="/create-project/confirm" element={<ModalPopup />} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/homepage" element={<HomePage />} />
         </Routes>
       </Box>
     </>
