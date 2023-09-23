@@ -10,7 +10,7 @@ import {
 
  function Projectcard() {
     return (
-        <Card position="static" sx={{ bgcolor: "white" }}>
+        <Card sx={{ bgcolor: "white", width: '90%', my: 4 }}>
             <CardContent>
                 <Grid container spacing={2}>
                     <Grid item xs={8}>

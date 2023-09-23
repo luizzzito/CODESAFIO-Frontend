@@ -22,12 +22,15 @@ export const DetailsProject = () => {
         backgroundImage: "linear-gradient(180deg, #42D2B8 0%, #425DD2 83.36%)",
         width: "100vw",
         height: "100vh",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}
     >
       <Card position="static" sx={{ bgcolor: "white" }}>
             <CardContent>
                 <Grid container spacing={2}>
-                    <Grid item xs={8}>
+                    <Grid item xs={7}>
                         <Typography variant="h6">Nombre Proyecto</Typography>
                     </Grid>
                     <Grid item xs={4}>
@@ -39,7 +42,7 @@ export const DetailsProject = () => {
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
                         }}>
                             <Typography variant="subtitle1" color={'white'}>Reclutando</Typography>
                         </Box>
