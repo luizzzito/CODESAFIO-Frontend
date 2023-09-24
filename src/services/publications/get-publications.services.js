@@ -1,21 +1,19 @@
-import axios from 'axios'
+import axios from "axios";
 // Own
-import { API_BASE_URL } from '../../config'
+import { API_BASE_URL } from "../../config";
 
-const URL = `${API_BASE_URL}/publications`
+const URL = `${API_BASE_URL}/publications`;
 
-export default async function getPublications(token) {
+export default async function getPublications(token, page = 1, size = 10) {
   try {
-    const response = await axios.get(URL, {
+    const response = await axios.get(URL + `?page=${page}&size=${size}`, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    return response.data
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
   } catch (error) {
-    console.log(error)
-    throw new Error(error.message)
+    console.log(error);
+    throw new Error(error.message);
   }
 }
-
-

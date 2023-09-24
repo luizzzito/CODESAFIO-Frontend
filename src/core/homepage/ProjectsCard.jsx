@@ -5,28 +5,44 @@ import {
   CardContent,
   Typography,
   Divider,
-  Button
+  Button,
+  CardActions,
+  Box,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import ProjectStatus from "./ProjectStatus";
 
-function ProjectsCard( {project}) {
+function ProjectsCard({ project }) {
   return (
-    <Card sx={{ width: "90%", my: 2 }}>
+    <Card sx={{ width: "100%" }}>
       <CardHeader
-        title={project.title}
-        action={
-          <ProjectStatus />
+        title={
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Typography sx={{ width: "60%", fontSize: "20px" }}>
+              {project.projectName}
+            </Typography>
+            <ProjectStatus status={project.status} />
+          </Box>
         }
       />
-      <CardContent sx={{maxHeight: 120}}>
-        <Typography>{project.details}</Typography>
-        <Link to="/detailsproject">
-        <Button variant="text">VER MÁS</Button>
-        </Link>
-        <Divider sx={{ py: 1 }} />
+      <CardContent sx={{ maxHeight: "100px", overflow: "hidden" }}>
+        <Typography>{project.projectDescription}</Typography>
       </CardContent>
+      <CardContent sx={{ my: -1.5 }}>
+        <Divider />
+      </CardContent>
+      <CardActions>
+        <Link to="/detailsproject" className="project-card-button">
+          <Button variant="text">VER MÁS</Button>
+        </Link>
+      </CardActions>
     </Card>
   );
 }

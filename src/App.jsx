@@ -1,5 +1,5 @@
 import Navbar from "./core/components/Navbar";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./core/login/Login";
 import { Box } from "@mui/material";
 import CreateProject from "./core/createproject/CreateProject";
@@ -17,15 +17,18 @@ import CreatedProjects from "./core/createdprojects/CreatedProjects";
 import Applications from "./core/applications/Applications";
 import EditProject from "./core/editproject/EditProject";
 import ApplyFor from "./core/applyfor/ApplyFor";
+import { useEffect } from "react";
 
 function App() {
   const state = useSelector((state) => state.auth);
+
   return (
     <>
       <Box sx={{ bgcolor: "white", width: "100vw" }}>
         {state.success && <Navbar />}
         <Routes>
           <Route path="/" element={<UnprotectedRoutes />}>
+            <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Route>
