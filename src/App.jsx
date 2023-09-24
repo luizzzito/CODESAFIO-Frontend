@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
 import Navbar from "./core/components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Login from "./core/login/Login";
+import { Box } from "@mui/material";
 import CreateProject from "./core/createproject/CreateProject";
 import Register from "./core/register/Register";
 import ModalPopup from "./core/components/ModalPopup";
