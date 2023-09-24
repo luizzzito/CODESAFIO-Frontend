@@ -111,9 +111,12 @@ export const DetailsProject = () => {
                 <Link to="/homepage">
                 <Button variant="text" sx={{marginTop:2}}>REGRESAR</Button>
                 </Link>
+                        <Link to="/applyfor">
           <Button variant="contained" sx={{ color: "white", marginTop:2 , marginLeft: 2 }}>
             APLICAR
           </Button>
+          </Link> 
+
             </CardContent>
         </Card>
     </Box>

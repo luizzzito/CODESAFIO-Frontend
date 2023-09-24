@@ -16,6 +16,7 @@ import DetailsProject from "./core/detailsproject/DetailsProject";
 import CreatedProjects from "./core/createdprojects/CreatedProjects";
 import Applications from "./core/applications/Applications";
 import EditProject from "./core/editproject/EditProject";
+import ApplyFor from "./core/applyfor/ApplyFor";
 
 function App() {
   const state = useSelector((state) => state.auth);
@@ -38,6 +39,7 @@ function App() {
             <Route path="/createdproject" element={<CreatedProjects />} />
             <Route path="/applications" element={<Applications />} />
             <Route path="/editproject" element={<EditProject />} />
+            <Route path="/applyfor" element={<ApplyFor />} />
           </Route>
         </Routes>
       </Box>

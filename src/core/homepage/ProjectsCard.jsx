@@ -5,6 +5,7 @@ import {
   CardContent,
   Typography,
   Divider,
+  Button
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import {Link} from "react-router-dom";
@@ -21,6 +22,9 @@ function ProjectsCard( {project}) {
       />
       <CardContent sx={{maxHeight: 120}}>
         <Typography>{project.details}</Typography>
+        <Link to="/detailsproject">
+        <Button variant="text">VER MÁS</Button>
+        </Link>
         <Divider sx={{ py: 1 }} />
       </CardContent>
     </Card>

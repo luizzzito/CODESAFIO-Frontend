@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import Skill from "../components/skill";
+import Skill from "../components/Skill";
 
 function ProjectStatus() {
   const statuses = [
