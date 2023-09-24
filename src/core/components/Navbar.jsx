@@ -55,9 +55,7 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" sx={{ flexGrow: 1 }}>
-            Codesafio
-          </Typography>
+        
           <Box edge="" sx={{ display: { xs: "none", sm: "flex" } }}>
             {navLinks.map((item) => (
               <Button

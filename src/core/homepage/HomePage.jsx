@@ -23,7 +23,7 @@ const HomePage = () => {
       title: "project1",
       status: "in-progress",
       details:
-        "loremipsunmsakmdklasmdklasmdasl;dasl;dkalskasopadskasfasfasfasfas;",
+        "Luis es conocido mundialmente por tener hipopotomonstrosesquipedaliofobia",
     },
     {
       title: "project1",

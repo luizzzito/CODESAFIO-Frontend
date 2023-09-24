@@ -12,14 +12,14 @@ import ProjectStatus from "./ProjectStatus";
 
 function ProjectsCard( {project}) {
   return (
-    <Card sx={{ width: "90%", height: "80%", my: 2 }}>
+    <Card sx={{ width: "90%", my: 2 }}>
       <CardHeader
         title={project.title}
         action={
           <ProjectStatus />
         }
       />
-      <CardContent>
+      <CardContent sx={{maxHeight: 120}}>
         <Typography>{project.details}</Typography>
         <Divider sx={{ py: 1 }} />
       </CardContent>
