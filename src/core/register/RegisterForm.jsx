@@ -27,7 +27,8 @@ function RegisterForm() {
 
   const occupations = [
     { name: 'Estudiante', value: 'student' },
-    { name: 'dos', value: 2 }
+    { name: 'Profesor', value: 'teacher' },
+    { name: 'Graduado', value: 'graduated' },
   ]
 
   const handleSubmit = async (e) => {
@@ -92,7 +93,7 @@ function RegisterForm() {
       <TextField
         name='occupation'
         label='Ocupación'
-        value={occupationValue}
+        value={user.occupation}
         onChange={handleChange}
         select
         sx={{ width: '60%', mt: 2 }}
