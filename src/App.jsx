@@ -9,22 +9,29 @@ import Profile from "./core/profile/Profile";
 import HomePage from "./core/homepage/HomePage";
 import EditProfile from "./core/profile/editProfile/EditProfile";
 import ApplyProject from "./core/applyproject/ApplyProject";
+import UnprotectedRoutes from "./core/login/UnprotectedRoutes";
+import ProtectedRoutes from "./core/login/ProtectedRoutes";
+import { useSelector } from "react-redux";
 
 function App() {
+  const state = useSelector((state) => state.auth);
   return (
     <>
       <Box sx={{ bgcolor: "white", width: "100vw" }}>
-        <Navbar />
-
+        {state.success && <Navbar />}
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/create-project" element={<CreateProject />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/create-project/confirm" element={<ModalPopup />} />
-          <Route path="/homepage" element={<HomePage />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/editProfile" element={<EditProfile />} />
-          <Route path="/applyproject" element={<ApplyProject />} />
+          <Route path="/" element={<UnprotectedRoutes />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
+          <Route path="/" element={<ProtectedRoutes />}>
+            <Route path="/create-project" element={<CreateProject />} />
+            <Route path="/create-project/confirm" element={<ModalPopup />} />
+            <Route path="/homepage" element={<HomePage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/editProfile" element={<EditProfile />} />
+            <Route path="/applyproject" element={<ApplyProject />} />
+          </Route>
         </Routes>
       </Box>
     </>

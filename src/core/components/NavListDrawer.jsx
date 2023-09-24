@@ -5,6 +5,7 @@ import {
   ListItemIcon,
   ListItemButton,
 } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 export default function NavListDrawer({ navLinks }) {
   return (
@@ -14,7 +15,7 @@ export default function NavListDrawer({ navLinks }) {
         {navLinks.map((item) => (
           <List key={item.title}>
             <ListItem>
-              <ListItemButton component="a" href={item.path}>
+              <ListItemButton component={NavLink} to={item.path}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 {item.title}
               </ListItemButton>
