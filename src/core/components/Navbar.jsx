@@ -44,7 +44,7 @@ export default function Navbar() {
   ];
   return (
     <nav>
-      <AppBar position="static">
+      <AppBar position="static" sx={{bgcolor:"#42D0BA"}}>
         <Toolbar variant="dense">
           <IconButton
             edge="start"
