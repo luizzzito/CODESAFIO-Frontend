@@ -4,9 +4,9 @@ import { API_BASE_URL } from '../../config'
 
 const URL = `${API_BASE_URL}/publications`
 
-export default async function getPublicationByLeader(token, leaderId) {
+export default async function createPublication(token, body) {
   try {
-    const response = await axios.get(URL + '/userPublication/' + leaderId, {
+    const response = await axios.post(URL, body, {
       headers: {
         Authorization: `Bearer ${token}`
       }
