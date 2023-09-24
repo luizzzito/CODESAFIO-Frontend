@@ -8,6 +8,7 @@ import ModalPopup from "./core/components/ModalPopup";
 import Profile from "./core/profile/Profile";
 import HomePage from "./core/homepage/HomePage";
 import EditProfile from "./core/profile/editProfile/EditProfile";
+import ApplyProject from "./core/applyproject/ApplyProject";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/editProfile" element={<EditProfile />} />
+          <Route path="/applyproject" element={<ApplyProject />} />
         </Routes>
       </Box>
     </>
