@@ -4,9 +4,9 @@ import ProjectInfo from "./ProjectInfo";
 
 function ProjectsApplication() {
   const ApplyProjects = [
-    { id: 1, title: "Base de datos", date: "12-02-2005", state: "Aceptado" },
-    { id: 2, title: "Hola", date: "4-08-2020", state: "Rechazado" },
-    { id: 3, title: "Adios", date: "3-07-2018", state: "En proceso"},
+    { id: 1, title: "Base de datos", date: "12-02-2005", state: "recruiting" },
+    { id: 2, title: "Hola", date: "4-08-2020", state: "finalized" },
+    { id: 3, title: "Adios", date: "3-07-2018", state: "onHold"},
   ];
   return (
     <Box sx={{mt: 1}}>

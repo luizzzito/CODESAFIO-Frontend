@@ -5,6 +5,10 @@ import {
 } from "@mui/material";
 
 function ProjectInfo({ title, date, state }) {
+    const statusColors = new Map();
+    statusColors.set("recruiting", "#42D27C");
+    statusColors.set("onHold", "#DED842");
+    statusColors.set("finalized", "#D24242");
     return (
         <Container>
             <Grid container spacing={2}  marginTop={1}>
@@ -12,10 +16,9 @@ function ProjectInfo({ title, date, state }) {
                     <Typography sx={{ color: '#333333', fontWeight: 'bold' }}>{title}</Typography>
                 </Grid>
                 <Grid item xs={4}>
-                    {(state=="Rechazado") ? 
                     <Box
                     sx={{
-                        backgroundColor: '#D24242',
+                        backgroundColor: statusColors.get(state),
                         width: "auto",
                         height: 25,
                         display: 'flex',
@@ -25,35 +28,7 @@ function ProjectInfo({ title, date, state }) {
                     }}
                 >
                     <Typography sx={{ color: 'white ' }}>{state}</Typography>
-                </Box> : null}
-                {(state=="Aceptado") ? 
-                    <Box
-                    sx={{
-                        backgroundColor: '#42D27C',
-                        width: "auto",
-                        height: 25,
-                        display: 'flex',
-                        direction: 'column',
-                        justifyContent: 'center',
-                        borderRadius: 1
-                    }}
-                >
-                    <Typography sx={{ color: 'white ' }}>{state}</Typography>
-                </Box> : null}
-                {(state=="En proceso") ? 
-                    <Box
-                    sx={{
-                        backgroundColor: '#DED842',
-                        width: "auto",
-                        height: 25,
-                        display: 'flex',
-                        direction: 'column',
-                        justifyContent: 'center',
-                        borderRadius: 1
-                    }}
-                >
-                    <Typography sx={{ color: 'white ' }}>{state}</Typography>
-                </Box> : null}
+                </Box> 
                 </Grid>
             </Grid>
             <Typography sx={{ color: '#565656', marginTop: 1 }}>{date}</Typography>
