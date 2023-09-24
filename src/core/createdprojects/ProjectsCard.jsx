@@ -60,10 +60,12 @@ function ProjectsCard({ title, date, status, description }) {
       </Typography>
       <Grid container spacing={2} marginTop={1}>
         <Grid item xs={7}>
-          <Button variant="text">VER APLICACIONES</Button>
+          <Link to="/applications">
+            <Button variant="text">VER APLICACIONES</Button>
+          </Link>
         </Grid>
         <Grid item xs={4}>
-          <Link to="/homepage">
+          <Link to="/editproject">
             <EditIcon
               fontSize="medium"
               color="primary"

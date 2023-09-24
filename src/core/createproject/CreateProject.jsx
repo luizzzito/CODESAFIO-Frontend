@@ -5,12 +5,15 @@ import {
   TextField,
   Card,
   CardContent,
+  CardActions,
   Typography,
   IconButton,
   InputLabel,
   Select,
   MenuItem,
+  DialogActions
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import ModalPopup from "../components/ModalPopup";
 
@@ -19,6 +22,9 @@ const CreateProject = () => {
   const handleChange = (event) => {
     setCategory(event.target.value);
   };
+  const handleSubmit = () => {
+    console.log("hola")
+}
 
   return (
     <Box
@@ -56,11 +62,26 @@ const CreateProject = () => {
             <MenuItem value={30}>Difícil</MenuItem>
           </Select>
           <Typography>Agrega un nuevo puesto al proyecto</Typography>
-          <ModalPopup />
-          <Button variant="outlined">Cancelar</Button>
+          <CardActions>
+          <ModalPopup modalFunction={handleSubmit}>
+              <DialogActions sx={{ flexDirection: "column", gap: 2 }}>
+                <TextField label="Competencia" select fullWidth>
+                  <MenuItem>Hola</MenuItem>
+                </TextField>
+                <TextField label="Nivel" size="small" select fullWidth>
+                  <MenuItem>Alto xd </MenuItem>
+                </TextField>
+              </DialogActions>
+          </ModalPopup>
+        </CardActions>
+        <CardActions sx={{ justifyContent: "flex-end", gap: 1 }}>
+          <Link to="/createdproject">
+            <Button variant="outlined">CANCELAR</Button>
+          </Link>
           <Button variant="contained" sx={{ color: "white" }}>
-            Crear
+            CREAR
           </Button>
+        </CardActions>
         </CardContent>
       </Card>
     </Box>

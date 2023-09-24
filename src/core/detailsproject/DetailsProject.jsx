@@ -7,6 +7,7 @@ import {
   Typography,
   Grid
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 
 export const DetailsProject = () => {
@@ -107,7 +108,9 @@ export const DetailsProject = () => {
                             <Typography variant="subtitle1" color={'#8C8C8C'}>Avanzado</Typography>
                     </Grid>
                 </Grid>
+                <Link to="/homepage">
                 <Button variant="text" sx={{marginTop:2}}>REGRESAR</Button>
+                </Link>
           <Button variant="contained" sx={{ color: "white", marginTop:2 , marginLeft: 2 }}>
             APLICAR
           </Button>
