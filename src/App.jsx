@@ -6,6 +6,7 @@ import CreateProject from "./core/createproject/CreateProject";
 import Register from "./core/register/Register";
 import Profile from "./core/profile/Profile";
 import EditProfile from "./core/profile/editProfile/EditProfile";
+import ApplyProject from "./core/applyproject/ApplyProject";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/editProfile" element={<EditProfile />} />
+          <Route path="/applyproject" element={<ApplyProject />} />
         </Routes>
       </Box>
     </>
