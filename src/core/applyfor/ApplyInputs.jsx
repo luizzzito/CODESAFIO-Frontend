@@ -5,57 +5,64 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  DialogActions,
-  DialogContentText,
   MenuItem,
   TextField,
-  Typography,
   InputLabel,
   Select,
+  Typography,
 } from "@mui/material";
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import createApplication from "../../services/applications/create-application.services";
 
 function ApplyInputs() {
-  const handleSubmit = () => {
-    console.log("hola");
-  };
-
+  const navigate = useNavigate();
   const { id } = useParams();
+  const { userToken } = useSelector((state) => state.auth);
+  const [apply, setApply] = useState({
+    publicationId: +id,
+    applicationDescription: "",
+  });
 
   const handleChange = (event) => {
-    setCategory(event.target.value);
+    const { name, value } = event.target;
+    setApply({ ...apply, [name]: value });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(apply);
+    const response = await createApplication(userToken, apply);
+    console.log(response);
+    navigate("/homepage");
+    try {
+    } catch (error) {}
+  };
+
   return (
-    <Card sx={{ width: "90%", height: "80%", my: 4 }}>
+    <Card
+      sx={{ width: "90%", height: "80%", my: 4 }}
+      component="form"
+      onSubmit={handleSubmit}
+    >
       <CardHeader title={"Aplica para el proyecto"} />
-      <CardContent
-        component="form"
-        sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-      >
-        <InputLabel id="demo-simple-select-label">
-          Posición a aplicar
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="Dificultad del proyecto"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Frontend</MenuItem>
-          <MenuItem value={20}>Backend</MenuItem>
-          <MenuItem value={30}>SQA</MenuItem>
-        </Select>
+      <CardContent sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        <Typography>
+          ¿Qué te hace el mejor candidato para este puesto?
+        </Typography>
         <TextField
-          label="¿Qué te hace el mejor candidato para este puesto?"
+          label="Descripción"
           multiline
           rows={4}
+          name="applicationDescription"
+          onChange={handleChange}
         />
         <CardActions sx={{ justifyContent: "flex-end", gap: 1 }}>
           <Link to={`/detailsproject/${id}`}>
             <Button variant="outlined">Cancelar</Button>
           </Link>
-          <Button variant="contained" sx={{ color: "white" }}>
+          <Button variant="contained" sx={{ color: "white" }} type="submit">
             APLICAR
           </Button>
         </CardActions>

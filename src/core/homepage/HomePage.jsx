@@ -55,7 +55,7 @@ const HomePage = () => {
         justifyContent: "center",
         alignItems: "center",
         overflow: "hidden",
-        position: "relative"
+        position: "relative",
       }}
     >
       <Box
@@ -65,9 +65,8 @@ const HomePage = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "end",
-          top:6,
-          right: 0
-        
+          top: 6,
+          right: 0,
         }}
       >
         <RefreshButton />
