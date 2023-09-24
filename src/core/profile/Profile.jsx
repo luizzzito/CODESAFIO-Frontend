@@ -1,11 +1,8 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import ProfileCard from "./ProfileCard";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import getUser from "../../services/users/get-user.services";
+import RefreshButton from "../components/RefreshButton";
 
 function Profile() {
-
   return (
     <Box
       sx={{
@@ -15,8 +12,13 @@ function Profile() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
       }}
     >
+      <Container sx={{mt:-10}} iconStyle={{width:"60px", height:"60px"}}>
+        <RefreshButton />
+      </Container>
+
       <ProfileCard />
     </Box>
   );
