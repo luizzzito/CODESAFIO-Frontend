@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react'
 import {
   Box,
   Button,
@@ -7,7 +7,7 @@ import {
   CardContent,
   CardActions,
   Typography,
-  IconButton,
+  // IconButton,
   InputLabel,
   Select,
   MenuItem,
@@ -15,7 +15,10 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import ModalPopup from "../components/ModalPopup";
+import getAllCategories from '../../services/skill-categories/get-all-skill-categories.services'
+import getAllSkills from '../../services/skills/get-all-skills.services'
+
+import ModalPopup from '../components/ModalPopup'
 
 const CreateProject = () => {
   const [category, setCategory] = useState("");
@@ -34,6 +37,32 @@ const CreateProject = () => {
     e.preventDefault();
     console.log(project);
   };
+
+  const [categoryData, setCategoryData] = useState()
+  const [skillData, setSkillData] = useState()
+
+  const fetchAppInfo = async () => {
+    try {
+      const categories = await getAllCategories()
+      setCategoryData(categories)
+      const skills = await getAllSkills()
+      setSkillData(skills)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchAppInfo()
+  }, [])
+
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value)
+  }
+
+  const handleSkillChange = (event) => {
+    setSkill(event.target.value)
+  }
 
   return (
     <Box
@@ -85,11 +114,41 @@ const CreateProject = () => {
           <Typography>Agrega un nuevo puesto al proyecto</Typography>
           <CardActions>
             <ModalPopup modalFunction={handleSubmit}>
-              <DialogActions sx={{ flexDirection: "column", gap: 2 }}>
-                <TextField label="Competencia" select fullWidth>
+              <DialogActions sx={{ flexDirection: 'column', gap: 2 }}>
+                <Select
+                  labelId='demo-simple-select-label'
+                  id='demo-simple-select'
+                  label='Dificultad del proyecto'
+                  onChange={handleCategoryChange}
+                >
+                  {categoryData?.map((category) => (
+                    <MenuItem
+                      key={category.skillCategoryId}
+                      value={category.skillCategoryId}
+                    >
+                      {category.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+
+                <Select
+                  labelId='demo-simple-select-label'
+                  id='demo-simple-select'
+                  label='Dificultad del proyecto'
+                  onChange={handleSkillChange}
+                >
+                  {skillData
+                    ?.filter((skill) => skill.skillCategoryId === category)
+                    .map((skill) => (
+                      <MenuItem key={skill.skillId} value={skill.skillId}>
+                        {skill.name}
+                      </MenuItem>
+                    ))}
+                </Select>
+                <TextField label='Competencia' select fullWidth>
                   <MenuItem>Hola</MenuItem>
                 </TextField>
-                <TextField label="Nivel" size="small" select fullWidth>
+                <TextField label='Nivel' size='small' select fullWidth>
                   <MenuItem>Alto xd </MenuItem>
                 </TextField>
               </DialogActions>
@@ -106,7 +165,7 @@ const CreateProject = () => {
         </CardContent>
       </Card>
     </Box>
-  );
-};
+  )
+}
 
-export default CreateProject;
+export default CreateProject
