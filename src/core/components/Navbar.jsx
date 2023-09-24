@@ -15,21 +15,23 @@ import NavListDrawer from "./NavListDrawer";
 //Iconos utilizados
 import DeleteIcon from "@mui/icons-material/Delete";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  
+
   // Objeto con todos las secciones del navbar/sidebar
   const navLinks = [
     {
       title: "Home",
-      path: "a",
-      icon: <DeleteIcon />,
+      path: "/homepage",
+      icon: <HomeIcon />,
     },
     {
       title: "Perfil",
-      path: "a",
-      icon: <DeleteIcon />,
+      path: "/profile",
+      icon: <AccountCircleIcon />,
     },
     {
       title: "Postulaciones",
@@ -44,7 +46,7 @@ export default function Navbar() {
   ];
   return (
     <nav>
-      <AppBar position="static" sx={{bgcolor:"#42D0BA"}}>
+      <AppBar position="static" sx={{ bgcolor: "#42D0BA" }}>
         <Toolbar variant="dense">
           <IconButton
             edge="start"
@@ -55,7 +57,7 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-        
+
           <Box edge="" sx={{ display: { xs: "none", sm: "flex" } }}>
             {navLinks.map((item) => (
               <Button
@@ -76,7 +78,7 @@ export default function Navbar() {
         onClose={() => setOpen(false)}
         sx={{ display: { xs: "flex", sm: "none" } }}
       >
-        <NavListDrawer navLinks={navLinks} />
+        <NavListDrawer navLinks={navLinks} setOpen={setOpen} />
       </Drawer>
     </nav>
   );

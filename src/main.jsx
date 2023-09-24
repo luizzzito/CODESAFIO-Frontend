@@ -8,6 +8,8 @@ import "@fontsource/roboto/700.css";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 import store from "./app/store";
 import "./scss/index.scss";
 
@@ -41,13 +43,17 @@ const theme = createTheme({
   },
 });
 
+let persistor = persistStore(store);
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <Provider store={store}>
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <App />
         </ThemeProvider>
       </BrowserRouter>
-    </Provider>
+    </PersistGate>
+  </Provider>
 );

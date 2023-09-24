@@ -1,5 +1,4 @@
-import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import LoginForm from "./LoginForm";
 import { Link, Navigate } from "react-router-dom";
 import Container from "@mui/material/Container";
