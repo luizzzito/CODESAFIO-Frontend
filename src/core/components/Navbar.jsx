@@ -17,6 +17,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ViewInArIcon from "@mui/icons-material/ViewInAr";
+import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -29,19 +32,19 @@ export default function Navbar() {
       icon: <HomeIcon />,
     },
     {
+      title: "Tus Proyectos",
+      path: "/createdproject",
+      icon: <ViewInArIcon />,
+    },
+    {
+      title: "Tus aplicaciones",
+      path: "/applyproject",
+      icon: <ForwardToInboxIcon />,
+    },
+    {
       title: "Perfil",
       path: "/profile",
       icon: <AccountCircleIcon />,
-    },
-    {
-      title: "Postulaciones",
-      path: "a",
-      icon: <DeleteIcon />,
-    },
-    {
-      title: "Publicaciones",
-      path: "a",
-      icon: <DeleteIcon />,
     },
   ];
   return (
@@ -63,8 +66,8 @@ export default function Navbar() {
               <Button
                 color="inherit"
                 key={item.title}
-                component="a"
-                href={item.path}
+                component={NavLink}
+                to={item.path}
               >
                 {item.title}
               </Button>
