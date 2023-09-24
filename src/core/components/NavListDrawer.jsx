@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-export default function NavListDrawer({ navLinks }) {
+export default function NavListDrawer({ navLinks, setOpen }) {
   return (
     <Box sx={{ width: 250, bgcolor: "white", height: "100%" }}>
       <nav>
@@ -15,7 +15,13 @@ export default function NavListDrawer({ navLinks }) {
         {navLinks.map((item) => (
           <List key={item.title}>
             <ListItem>
-              <ListItemButton component={NavLink} to={item.path}>
+              <ListItemButton
+                component={NavLink}
+                to={item.path}
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 {item.title}
               </ListItemButton>
