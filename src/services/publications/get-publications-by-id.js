@@ -4,16 +4,16 @@ import { API_BASE_URL } from "../../config";
 
 const URL = `${API_BASE_URL}/publications`;
 
-export default async function getPublications(token, page = 1, size = 10) {
+export default async function getPublicationById(token, id) {
   try {
-    const response = await axios.get(URL + `?page=${page}&size=${size}`, {
+    const response = await axios.get(URL + "/" + id, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data;
-  } catch (error) {
-    console.log(error);
+    return response;
+  } catch (e) {
+    console.log(e.message);
     throw new Error(error.message);
   }
 }
