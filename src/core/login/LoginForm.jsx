@@ -12,13 +12,6 @@ function LoginForm() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const state = useSelector((state) => state.auth);
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpen(false);
-  };
   const [user, setUser] = useState({
     email: "",
     password: "",

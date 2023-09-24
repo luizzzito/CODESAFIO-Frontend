@@ -7,9 +7,9 @@ const RefreshButton = () => {
   const refresh = () => window.location.reload(true);
 
   return (
-    <Button onClick={refresh}>
-      <IconButton>
-        <CachedIcon />
+    <Button onClick={refresh} size="large">
+      <IconButton >
+        <CachedIcon sx={{fontSize:"50px", color:"white"}} />
       </IconButton>
     </Button>
   );

@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import ProfileCard from "./ProfileCard";
 import RefreshButton from "../components/RefreshButton";
 
@@ -13,11 +13,12 @@ function Profile() {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        position: "relative"
       }}
     >
-      <Container sx={{mt:-10}} iconStyle={{width:"60px", height:"60px"}}>
+      <Box sx={{position:"absolute", right:"0px", top:"0px", mt:-1}}>
         <RefreshButton />
-      </Container>
+      </Box>
 
       <ProfileCard />
     </Box>

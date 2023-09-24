@@ -30,9 +30,9 @@ function ProjectsApplication() {
         return (
           <ProjectInfo
             key={project.publicationId}
-            name={project.name}
+            name={project.publicationName}
             date={project.createdAt}
-            status={project.status}
+            status={project.isAccepted}
             description={project.description}
           />
         );

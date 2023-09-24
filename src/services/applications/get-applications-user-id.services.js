@@ -11,6 +11,7 @@ export default async function getApplicationsByUserId(token, userId) {
         Authorization: `Bearer ${token}`
       }
     })
+    console.log(response)
     return response.data
   } catch (error) {
     console.log(error)

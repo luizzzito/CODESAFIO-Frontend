@@ -17,7 +17,7 @@ function ProjectsCard( {project}) {
       <CardHeader
         title={project.title}
         action={
-          <ProjectStatus />
+          <ProjectStatus project={project} />
         }
       />
       <CardContent sx={{maxHeight: 120}}>

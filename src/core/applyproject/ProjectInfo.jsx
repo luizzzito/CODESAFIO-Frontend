@@ -2,18 +2,18 @@ import { Typography, Grid, Container, Box, Divider } from "@mui/material";
 
 function ProjectInfo({ name, date, status, description }) {
   const statusColors = new Map();
-  statusColors.set("recruiting", "#42D27C");
-  statusColors.set("onHold", "#DED842");
-  statusColors.set("finalized", "#D24242");
+  statusColors.set(true, "#42D27C");
+  statusColors.set(null, "#DED842");
+  statusColors.set(false, "#D24242");
 
   function translateStatus(status) {
     switch (status) {
-      case "started":
-        return "Comenzado";
-      case "not-started":
-        return "Por Iniciar";
-      case "finished":
-        return "Finalizado";
+      case true:
+        return "Aceptado";
+      case false:
+        return "En espera";
+      case null:
+        return "Rechazado";
       default:
         return status;
     }
