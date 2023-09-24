@@ -1,22 +1,39 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import { useState, useEffect } from "react";
 import ProjectInfo from "./ProjectInfo";
+import { useSelector } from "react-redux";
+import getApplicationsByUserId from "../../services/applications/get-applications-user-id.services";
 
 function ProjectsApplication() {
-  const ApplyProjects = [
-    { id: 1, title: "Base de datos", date: "12-02-2005", state: "recruiting" },
-    { id: 2, title: "Hola", date: "4-08-2020", state: "finalized" },
-    { id: 3, title: "Adios", date: "3-07-2018", state: "onHold"},
-  ];
+  const [applyProjects, setApplyProjects] = useState([]);
+  const { userToken, userID } = useSelector((state) => state.auth);
+
+  const getApplyProjectsInfo = async () => {
+    try {
+      const data = await getApplicationsByUserId(userToken, userID);
+      console.log(data);
+      setApplyProjects(data.items);
+
+      console.log(applyProjects);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getApplyProjectsInfo();
+  }, []);
+
   return (
-    <Box sx={{mt: 1}}>
-      {ApplyProjects.map((project) => {
+    <Box sx={{ mt: 1 }}>
+      {applyProjects.map((project) => {
         return (
           <ProjectInfo
-            key={project.id}
-            title={project.title}
-            date={project.date}
-            state={project.state}
+            key={project.publicationId}
+            name={project.name}
+            date={project.createdAt}
+            status={project.status}
+            description={project.description}
           />
         );
       })}
