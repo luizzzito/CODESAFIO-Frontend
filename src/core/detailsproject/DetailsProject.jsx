@@ -13,6 +13,7 @@ import getPublicationById from "../../services/publications/get-publications-by-
 import { useSelector } from "react-redux";
 import { difficulty } from "../../config";
 import SkillsProject from "./SkillsProject";
+import { statusColors } from "../../config";
 
 export const DetailsProject = () => {
   const [category, setCategory] = useState("blue");
@@ -21,6 +22,19 @@ export const DetailsProject = () => {
   const [publication, setPublication] = useState({});
   const [skills, setSkills] = useState([]);
 
+  function translateStatus(status) {
+    switch (status) {
+      case "started":
+        return "Comenzado";
+      case "not-started":
+        return "Por Iniciar";
+      case "finished":
+        return "Finalizado";
+      default:
+        return status;
+    }
+  }
+  
   const fetchProject = async () => {
     try {
       const { data } = await getPublicationById(userToken, id);
@@ -57,7 +71,7 @@ export const DetailsProject = () => {
                 sx={{
                   width: 100,
                   height: 30,
-                  backgroundColor: "#42D27C",
+                  backgroundColor: `${statusColors.get(publication.status)}`,
                   borderRadius: 1,
                   display: "flex",
                   flexDirection: "column",
@@ -66,7 +80,7 @@ export const DetailsProject = () => {
                 }}
               >
                 <Typography variant="subtitle1" color={"white"}>
-                  {publication.status}
+                  {translateStatus(publication.status)}
                 </Typography>
               </Box>
             </Grid>

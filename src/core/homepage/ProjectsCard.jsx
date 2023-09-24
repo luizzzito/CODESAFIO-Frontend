@@ -25,7 +25,7 @@ function ProjectsCard({ project }) {
               alignItems: "center",
             }}
           >
-            <Typography sx={{ width: "60%", fontSize: "20px" }}>
+            <Typography sx={{ width: "60%", fontSize: "20px", fontWeight:"bold" }}>
               {project.projectName}
             </Typography>
             <ProjectStatus status={project.status} />

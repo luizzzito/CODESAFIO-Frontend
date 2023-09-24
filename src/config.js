@@ -12,3 +12,8 @@ skillLevel.set(1, "Básico");
 skillLevel.set(2, "Intermedio");
 skillLevel.set(3, "Avanzado");
 skillLevel.set(4, "Experto");
+
+export const statusColors = new Map();
+statusColors.set("started", "#42D27C");
+statusColors.set("not-started", "#DED842");
+statusColors.set("finished", "#D24242");

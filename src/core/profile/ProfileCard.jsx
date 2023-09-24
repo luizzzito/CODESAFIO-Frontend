@@ -68,7 +68,7 @@ function ProfileCard() {
           variant="h5"
           sx={{ mt: -2, mb: 2, color: "gray", fontSize: 18 }}
         >
-          {user.personalDescription === (null || "")
+          {(user.personalDescription === (null) || user.personalDescription === "")
             ? "No existe descripción o(〒﹏〒)o "
             : user.personalDescription}
         </Typography>
