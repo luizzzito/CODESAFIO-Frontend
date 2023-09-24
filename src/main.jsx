@@ -32,6 +32,9 @@ const theme = createTheme({
     triadic2: {
       main: "#d242a5",
     },
+    blank: {
+      main: "#ffffff"
+    },
     info: {
       main: "#ffe200",
     },

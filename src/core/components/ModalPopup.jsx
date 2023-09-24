@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Dialog,
   DialogActions,
@@ -10,7 +11,7 @@ import {
 import { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 
-const ModalPopup = () => {
+const ModalPopup = ({ children, modalFunction }) => {
   const [open, setOpen] = useState(false);
   const openPopup = () => {
     setOpen(true);
@@ -18,27 +19,36 @@ const ModalPopup = () => {
   const closePopup = () => {
     setOpen(false);
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    modalFunction();
+    closePopup();
+  };
   return (
-    <div style={{ textAlign: "center" }}>
-      <Button onClick={openPopup} variant="contained">
-        <IconButton>
+    <div style={{ textAlign: "center", width: "100%" }}>
+      <Button onClick={openPopup} variant="contained" fullWidth size="small">
+        <IconButton color="blank">
           <AddIcon />
         </IconButton>
       </Button>
       <Dialog open={open}>
-        <DialogTitle> Titulo </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa,
-            sequi est enim temporibus delectus quidem sapiente quas repellat
-            aliquid provident recusandae similique tempore, ad perspiciatis
-            nihil quae soluta? Odit, deserunt.
-          </DialogContentText>
+        <DialogTitle> Agregar competencia</DialogTitle>
+        <DialogContent sx={{ width: { xs: "80vw", sm: "100%" } }}>
+          {children}
         </DialogContent>
-        <DialogActions>
-          <Button onClick={closePopup} color="error">
-            Hola
-          </Button>
+        <DialogActions sx={{ mb: 1 }}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ display: "flex", gap: 1 }}
+          >
+            <Button onClick={closePopup} variant="outlined" color="primary">
+              Cancelar
+            </Button>
+            <Button variant="contained" sx={{ color: "white" }} type="submit">
+              Agregar
+            </Button>
+          </Box>
         </DialogActions>
       </Dialog>
     </div>
