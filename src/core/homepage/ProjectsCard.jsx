@@ -39,7 +39,10 @@ function ProjectsCard({ project }) {
         <Divider />
       </CardContent>
       <CardActions>
-        <Link to="/detailsproject" className="project-card-button">
+        <Link
+          to={`/detailsproject/${project.publicationId}`}
+          className="project-card-button"
+        >
           <Button variant="text">VER MÁS</Button>
         </Link>
       </CardActions>

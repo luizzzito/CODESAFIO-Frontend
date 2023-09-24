@@ -38,11 +38,11 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/editProfile" element={<EditProfile />} />
             <Route path="/applyproject" element={<ApplyProject />} />
-            <Route path="/detailsproject" element={<DetailsProject />} />
+            <Route path="/detailsproject/:id" element={<DetailsProject />} />
             <Route path="/createdproject" element={<CreatedProjects />} />
             <Route path="/applications" element={<Applications />} />
             <Route path="/editproject" element={<EditProject />} />
-            <Route path="/applyfor" element={<ApplyFor />} />
+            <Route path="/applyfor/:id" element={<ApplyFor />} />
           </Route>
         </Routes>
       </Box>
