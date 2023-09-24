@@ -2,7 +2,7 @@ import TextField from "@mui/material/TextField";
 import { Box, Snackbar } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState, useEffect } from "react";
-import { login } from "../../services/auth.services";
+import { login } from "../../services/auth/auth.services";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login as loginState } from "../../features/auth/authSlice";
