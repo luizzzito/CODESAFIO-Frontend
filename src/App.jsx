@@ -14,6 +14,7 @@ import ProtectedRoutes from "./core/login/ProtectedRoutes";
 import { useSelector } from "react-redux";
 import DetailsProject from "./core/detailsproject/DetailsProject";
 import CreatedProjects from "./core/createdprojects/CreatedProjects";
+import Applications from "./core/applications/Applications";
 
 function App() {
   const state = useSelector((state) => state.auth);
@@ -34,6 +35,7 @@ function App() {
             <Route path="/applyproject" element={<ApplyProject />} />
             <Route path="/detailsproject" element={<DetailsProject />} />
             <Route path="/createdproject" element={<CreatedProjects />} />
+            <Route path="/applications" element={<Applications />} />
           </Route>
         </Routes>
       </Box>
