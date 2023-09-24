@@ -1,17 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 import ProjectsCard from "./ProjectsCard";
+import { formContext } from '../../context/formContext'
+
 const HomePage = () => {
+  const { token } = useContext(formContext)
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = useSelector((state) => state.auth);
 
   const getUserInfo = () => {
     console.log(state);
+    console.log(token)
   };
 
   useEffect(() => {
