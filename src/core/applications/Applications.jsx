@@ -1,5 +1,6 @@
 import { Box, Typography, Card, CardContent, Grid } from "@mui/material";
 import UserFiles from "./UserFiles";
+import RefreshButton from "../components/RefreshButton";
 
 
 function Applications() {
@@ -15,9 +16,22 @@ function Applications() {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        flexDirection: 'column'
       }}
     >
+      <Box
+      sx={{
+        width: '100%',
+        height: 40,
+        position: 'relative',
+        bottom: 5,
+        display: 'flex',
+        direction: 'column',
+        justifyContent: 'end'
+      }}>
+      <RefreshButton/>
+      </Box>
         <Card sx={{ width: "90%", height: "80%", my: 4 }}>
             <CardContent>
             <Grid container spacing={2}  marginTop={1}>
