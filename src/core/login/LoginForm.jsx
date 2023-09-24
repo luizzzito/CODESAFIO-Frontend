@@ -1,17 +1,24 @@
 import TextField from "@mui/material/TextField";
-import { Box } from "@mui/material";
+import { Box, Snackbar } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState, useEffect } from "react";
 import { login } from "../../services/auth.services";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {login as loginState} from "../../features/auth/authSlice"
+import { login as loginState } from "../../features/auth/authSlice";
 
 function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const state = useSelector((state) => state.auth);
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -25,14 +32,19 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      console.log(user)
+      console.log(user);
       const data = await login(user);
-      console.log(data)
-      if(!data.message){
-        dispatch(loginState(data))
+      if (!data.message) {
+        dispatch(loginState(data));
       }
     } catch (e) {
-      console.log(e);
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={e.message}
+        action={action}
+      />;
     }
   };
   useEffect(() => {

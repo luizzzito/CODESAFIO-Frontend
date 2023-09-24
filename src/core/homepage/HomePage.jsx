@@ -48,7 +48,7 @@ const HomePage = () => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h5" sx={{ color: "white" }}>
+      <Typography variant="h5" sx={{ color: "white", mt:-5 }}>
         Descubre nuevos proyectos
       </Typography>
       <ProjectsCard project={testProjects[0]} />
