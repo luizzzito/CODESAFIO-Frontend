@@ -70,7 +70,7 @@ const HomePage = () => {
       <RefreshButton/>
       </Box>
       <Typography variant="h5" sx={{ color: "white", mt: -5 }}>
-        Descubre nuevos proyectos {console.log(state)}
+        Descubre nuevos proyectos
       </Typography>
       <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <InfiniteScroll
