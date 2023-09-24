@@ -1,22 +1,38 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import { useEffect, useState } from "react";
 import ProjectsCard from "./ProjectsCard";
+import getPublicationByLeader from "../../services/publications/get-publications-by-leader";
+import { useSelector } from "react-redux";
 
 function CreatedProjectsFiles() {
-  const ApplyProjects = [
-    { id: 1, title: "Base de datos", date: "12-02-2005", state: "recruiting" },
-    { id: 2, title: "Hola", date: "4-08-2020", state: "finalized" },
-    { id: 3, title: "Adios", date: "3-07-2018", state: "onHold"},
-  ];
+  const [projects, setProjects] = useState([]);
+  const { userToken, userID } = useSelector((state) => state.auth);
+
+  const getProjects = async () => {
+    try {
+      const { data } = await getPublicationByLeader(userToken, userID);
+      console.log(data);
+      setProjects(data.items)
+      console.log(projects)
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getProjects();
+  }, []);
+
   return (
-    <Box sx={{mt: 1}}>
-      {ApplyProjects.map((project) => {
+    <Box sx={{ mt: 1 }}>
+      {projects.map((item) => {
         return (
           <ProjectsCard
-            key={project.id}
-            title={project.title}
-            date={project.date}
-            state={project.state}
+            key={item.id}
+            title={item.name}
+            date={item.createdAt}
+            status={item.status}
+            description={item.description}
           />
         );
       })}

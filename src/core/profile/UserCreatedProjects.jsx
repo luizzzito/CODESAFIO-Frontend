@@ -14,7 +14,7 @@ function UserCreatedProjects({ createdProjects }) {
       </Typography>
       {createdProjects.length === 0 ? (
         <Typography sx={{ color: "gray" }}>
-          No has creado proyectos... (￣ρ￣)..zzZZ 
+          No has creado proyectos... (￣ρ￣)..zzZZ
         </Typography>
       ) : (
         viewCreatedProjects()

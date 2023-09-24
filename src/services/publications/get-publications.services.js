@@ -17,3 +17,5 @@ export default async function getPublications(token) {
     throw new Error(error.message)
   }
 }
+
+
