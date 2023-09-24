@@ -2,24 +2,24 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import CompletedProject from "./CompletedProject";
 
-function UserCompletedProjects() {
-  const completedProjects = [
-    { id: 1, title: "Cuidar el campus", date: "12-01-2005" },
-    { id: 2, title: "Cuidar el campus", date: "12-01-2005" },
-    { id: 3, title: "Cuidar el campus", date: "12-01-2005" },
-  ];
+function UserCompletedProjects({ completedProjects }) {
+  const reviewProjects = () => {
+    return completedProjects.map((item) => {
+      return <CompletedProject key={item.publicationId} item={item} />;
+    });
+  };
   return (
     <Box>
-      <Typography sx={{mb: 1, fontSize: 18}} variant="h6">Proyectos Completados</Typography>
-      {completedProjects.map((project) => {
-        return (
-          <CompletedProject
-            key={project.id}
-            title={project.title}
-            date={project.date}
-          />
-        );
-      })}
+      <Typography sx={{ mb: 1, fontSize: 18 }} variant="h6">
+        Proyectos Completados
+      </Typography>
+      {completedProjects.length === 0 ? (
+        <Typography sx={{ color: "gray" }}>
+          No has completado proyectos o(TヘTo){" "}
+        </Typography>
+      ) : (
+        reviewProjects()
+      )}
     </Box>
   );
 }

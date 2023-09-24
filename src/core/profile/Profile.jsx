@@ -1,11 +1,10 @@
 import { Box } from "@mui/material";
 import ProfileCard from "./ProfileCard";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import getUser from "../../services/users/get-user.services";
 
 function Profile() {
-
-  const state = useSelector(state => state.auth)
-  
 
   return (
     <Box
@@ -15,10 +14,9 @@ function Profile() {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
-      {console.log(state)}
       <ProfileCard />
     </Box>
   );
