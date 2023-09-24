@@ -12,6 +12,7 @@ import ApplyProject from "./core/applyproject/ApplyProject";
 import UnprotectedRoutes from "./core/login/UnprotectedRoutes";
 import ProtectedRoutes from "./core/login/ProtectedRoutes";
 import { useSelector } from "react-redux";
+import DetailsProject from "./core/detailsproject/DetailsProject";
 
 function App() {
   const state = useSelector((state) => state.auth);
@@ -26,11 +27,11 @@ function App() {
           </Route>
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="/create-project" element={<CreateProject />} />
-            <Route path="/create-project/confirm" element={<ModalPopup />} />
             <Route path="/homepage" element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/editProfile" element={<EditProfile />} />
             <Route path="/applyproject" element={<ApplyProject />} />
+            <Route path="/detailsproject" element={<DetailsProject />} />
           </Route>
         </Routes>
       </Box>
