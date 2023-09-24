@@ -9,6 +9,7 @@ import Profile from "./core/profile/Profile";
 import HomePage from "./core/homepage/HomePage";
 import EditProfile from "./core/profile/editProfile/EditProfile";
 import ApplyProject from "./core/applyproject/ApplyProject";
+import Applications from "./core/applications/Applications";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/editProfile" element={<EditProfile />} />
           <Route path="/applyproject" element={<ApplyProject />} />
+          <Route path="/applications" element={<Applications />} />
         </Routes>
 
         <Navbar />
