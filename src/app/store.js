@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import authReducer from "../features/auth/authSlice";
+import storage from "redux-persist/lib/storage"
 
 // Configuracion del 'Store' del estado de autenticacion
 
@@ -10,11 +11,14 @@ const reducers = combineReducers({
 
 const persistConfig = {
   key: "codesafio",
-  storage,
+  version:1,
+  storage
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-const store = createStore(persistedReducer);
+const store = configureStore({
+  reducer: persistedReducer,
+});
 
 export default store;
