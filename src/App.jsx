@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Box sx={{ bgcolor: "white", width: "100vw" }}>
-        {/*<Navbar /> */}
+        <Navbar />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/create-project" element={<CreateProject />} />
