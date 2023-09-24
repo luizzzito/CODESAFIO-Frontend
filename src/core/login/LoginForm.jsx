@@ -1,11 +1,13 @@
 import {TextField} from "@mui/material";
-import { Box, Snackbar } from "@mui/material";
+import { Box, Snackbar, IconButton, InputAdornment,  } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState, useEffect } from "react";
 import { login } from "../../services/auth/auth.services";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login as loginState } from "../../features/auth/authSlice";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -45,6 +47,17 @@ function LoginForm() {
     if (state.success === true) navigate("/homepage");
   }, [state.success, navigate]);
 
+  const [showPassword, setShowPassword] = useState(false)
+  const EndAdorment =( {showPassword, setShowPassword}) =>{
+    return(
+      <InputAdornment position='end'>
+        <IconButton onClick={()=> setShowPassword(!showPassword)}>
+          {showPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+        </IconButton>
+      </InputAdornment>
+    )
+  }
+
   return (
     <Box
       sx={{
@@ -66,12 +79,15 @@ function LoginForm() {
       />
       <TextField
         label="Contraseña"
-        type="password"
+        type={showPassword ? 'text': 'password'}
         name="password"
         variant="standard"
         sx={{ width: "70%" }}
         fullWidth={true}
         onChange={handleChange}
+        InputProps={{
+          endAdornment: <EndAdorment showPassword={showPassword} setShowPassword={setShowPassword}/>,
+        }}
       />
       <LoadingButton
         type="submit"
