@@ -8,8 +8,8 @@ import "@fontsource/roboto/700.css";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./app/store";
-import "./scss/index.scss"
+import store from "./app/store";
+import "./scss/index.scss";
 
 const theme = createTheme({
   palette: {
@@ -33,7 +33,7 @@ const theme = createTheme({
       main: "#d242a5",
     },
     blank: {
-      main: "#ffffff"
+      main: "#ffffff",
     },
     info: {
       main: "#ffe200",
@@ -42,14 +42,12 @@ const theme = createTheme({
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App /> 
-      </ThemeProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
     </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
 );

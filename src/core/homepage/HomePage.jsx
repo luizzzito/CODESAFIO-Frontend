@@ -1,7 +1,6 @@
-import React from "react";
+import { useEffect } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { logout } from "../../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
@@ -11,11 +10,13 @@ const HomePage = () => {
   const navigate = useNavigate();
   const state = useSelector((state) => state.auth);
 
-  const logoutfunction = () => {
-    dispatch(logout());
-    navigate("/login");
+  const getUserInfo = () => {
     console.log(state);
   };
+
+  useEffect(() => {
+    getUserInfo();
+  }, [getUserInfo, dispatch]);
 
   const testProjects = [
     {
@@ -48,8 +49,8 @@ const HomePage = () => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h5" sx={{ color: "white", mt:-5 }}>
-        Descubre nuevos proyectos
+      <Typography variant="h5" sx={{ color: "white", mt: -5 }}>
+        Descubre nuevos proyectos {console.log(state)}
       </Typography>
       <ProjectsCard project={testProjects[0]} />
       <ProjectsCard project={testProjects[1]} />

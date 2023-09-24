@@ -14,7 +14,6 @@ function App() {
   return (
     <>
       <Box sx={{ bgcolor: "white", width: "100vw" }}>
-        <Navbar />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/create-project" element={<CreateProject />} />
@@ -25,6 +24,8 @@ function App() {
           <Route path="/profile/editProfile" element={<EditProfile />} />
           <Route path="/applyproject" element={<ApplyProject />} />
         </Routes>
+
+        <Navbar />
       </Box>
     </>
   );

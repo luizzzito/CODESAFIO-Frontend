@@ -1,7 +1,12 @@
 import { Box } from "@mui/material";
 import ProfileCard from "./ProfileCard";
+import { useSelector } from "react-redux";
 
 function Profile() {
+
+  const state = useSelector(state => state.auth)
+  
+
   return (
     <Box
       sx={{
@@ -13,6 +18,7 @@ function Profile() {
         alignItems: "center"
       }}
     >
+      {console.log(state)}
       <ProfileCard />
     </Box>
   );
