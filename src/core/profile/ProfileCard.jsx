@@ -42,6 +42,7 @@ function ProfileCard() {
     try {
       const data = await getUser(userToken, userID);
       setUser(data);
+      console.log(data)
       console.log(user);
     } catch (e) {
       console.log(e.message);

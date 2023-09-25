@@ -40,7 +40,7 @@ function App() {
             <Route path="/applyproject" element={<ApplyProject />} />
             <Route path="/detailsproject/:id" element={<DetailsProject />} />
             <Route path="/createdproject" element={<CreatedProjects />} />
-            <Route path="/applications" element={<Applications />} />
+            <Route path="/applications/:id" element={<Applications />} />
             <Route path="/editproject" element={<EditProject />} />
             <Route path="/applyfor/:id" element={<ApplyFor />} />
           </Route>
