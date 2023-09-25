@@ -28,7 +28,8 @@ function CreatedProjectsFiles() {
       {projects.map((item) => {
         return (
           <ProjectsCard
-            key={item.id}
+            key={item.publicationId}
+            id={item.publicationId}
             title={item.name}
             date={item.createdAt}
             status={item.status}

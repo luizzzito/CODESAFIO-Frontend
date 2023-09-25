@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 
-function ProjectsCard({ title, date, status, description }) {
+function ProjectsCard({ id, title, date, status, description }) {
   const statusColors = new Map();
   statusColors.set("started", "#42D27C");
   statusColors.set("not-started", "#DED842");
@@ -48,7 +48,9 @@ function ProjectsCard({ title, date, status, description }) {
               borderRadius: 1,
             }}
           >
-            <Typography sx={{ color: "white " }}>{translateStatus(status)}</Typography>
+            <Typography sx={{ color: "white " }}>
+              {translateStatus(status)}
+            </Typography>
           </Box>
         </Grid>
       </Grid>
@@ -60,7 +62,7 @@ function ProjectsCard({ title, date, status, description }) {
       </Typography>
       <Grid container spacing={2} marginTop={1}>
         <Grid item xs={7}>
-          <Link to="/applications">
+          <Link to={`/applications/${id}`}>
             <Button variant="text">VER APLICACIONES</Button>
           </Link>
         </Grid>

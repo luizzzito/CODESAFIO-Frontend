@@ -2,19 +2,18 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import UserCard from "./Usercard";
 
-function UserFiles() {
-  const ApplyUsers = [
-    { id: 1, title: "@aaaa"},
-    { id: 2, title: "@bbb" },
-    { id: 3, title: "@cccc"},
-  ];
+function UserFiles({collaborators, userId, publicationId}) {
+
   return (
     <Box sx={{mt: 1}}>
-      {ApplyUsers.map((users) => {
+      {collaborators.map((collaborator) => {
         return (
           <UserCard
-            key={users.id}
-            title={users.title}
+            key={collaborator.userId}
+            description={collaborator.description}
+            title={collaborator.userName}
+            userId={userId}
+            publicationId={publicationId}
           />
         );
       })}
