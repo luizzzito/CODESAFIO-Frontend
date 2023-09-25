@@ -45,7 +45,14 @@ const ModalPopup = ({ children, modalFunction }) => {
             <Button onClick={closePopup} variant="outlined" color="primary">
               Cancelar
             </Button>
-            <Button variant="contained" sx={{ color: "white" }} type="submit">
+            <Button
+              variant="contained"
+              sx={{ color: "white" }}
+              onClick={() => {
+                modalFunction();
+                closePopup();
+              }}
+            >
               Agregar
             </Button>
           </Box>
