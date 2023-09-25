@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import UserCard from "./Usercard";
 
-function UserFiles({ collaborators, publicationId }) {
+function  UserFiles({ collaborators, publicationId }) {
   return (
     <Box sx={{ mt: 1 }}>
       {collaborators.map((collaborator) => {

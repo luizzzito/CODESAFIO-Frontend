@@ -25,7 +25,7 @@ function UserCard({ title, description, userId, publicationId }) {
             variant="outlined"
             onClick={async () => {
               try {
-                console.log(rejectBody)
+                console.log(rejectBody);
                 const response = await rejectCollaborator(
                   userToken,
                   rejectBody
@@ -43,6 +43,7 @@ function UserCard({ title, description, userId, publicationId }) {
             variant="contained"
             sx={{ color: "white", marginLeft: 2 }}
             onClick={async () => {
+              console.log(acceptBody);
               try {
                 const response = await acceptCollaborator(
                   userToken,
