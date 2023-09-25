@@ -95,7 +95,6 @@ function Applications() {
           </Typography>
           <UserFiles
             collaborators={collaborators}
-            userId={userID}
             publicationId={id}
           />
         </CardContent>

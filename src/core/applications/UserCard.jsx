@@ -25,6 +25,7 @@ function UserCard({ title, description, userId, publicationId }) {
             variant="outlined"
             onClick={async () => {
               try {
+                console.log(rejectBody)
                 const response = await rejectCollaborator(
                   userToken,
                   rejectBody

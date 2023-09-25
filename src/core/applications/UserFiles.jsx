@@ -2,17 +2,16 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import UserCard from "./Usercard";
 
-function UserFiles({collaborators, userId, publicationId}) {
-
+function UserFiles({ collaborators, publicationId }) {
   return (
-    <Box sx={{mt: 1}}>
+    <Box sx={{ mt: 1 }}>
       {collaborators.map((collaborator) => {
         return (
           <UserCard
             key={collaborator.userId}
             description={collaborator.description}
             title={collaborator.userName}
-            userId={userId}
+            userId={collaborator.userId}
             publicationId={publicationId}
           />
         );
