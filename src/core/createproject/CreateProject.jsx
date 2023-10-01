@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -7,7 +7,6 @@ import {
   CardContent,
   CardActions,
   Typography,
-  // IconButton,
   InputLabel,
   Select,
   MenuItem,
@@ -15,54 +14,94 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import getAllCategories from '../../services/skill-categories/get-all-skill-categories.services'
-import getAllSkills from '../../services/skills/get-all-skills.services'
+import getAllCategories from "../../services/skill-categories/get-all-skill-categories.services";
+import getAllSkills from "../../services/skills/get-all-skills.services";
 
-import ModalPopup from '../components/ModalPopup'
+import ModalPopup from "../components/ModalPopup";
+import createPublication from "../../services/publications/create-publication";
+import { useSelector } from "react-redux";
+import addSkillToPublication from "../../services/requirements/create-aplication-requirements";
 
 const CreateProject = () => {
   const [category, setCategory] = useState("");
   const [project, setProject] = useState({
-    projectName: "",
-    projectDescription: "",
+    name: "",
+    description: "",
     difficulty: "",
-    skills: [],
+    status: "not-started",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProject({ ...project, [name]: value });
     setCategory(e.target.value);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(project);
-  };
 
-  const [categoryData, setCategoryData] = useState()
-  const [skillData, setSkillData] = useState()
+  const { userToken } = useSelector((state) => state.auth);
+  const [categoryData, setCategoryData] = useState();
+  const [skillData, setSkillData] = useState();
+  const [skill, setSkill] = useState();
+  const [skillArray, setSkillArray] = useState([]);
+  const [quantity, setQuantity] = useState(0);
+  const [savePid, setSavePid] = useState(0);
 
   const fetchAppInfo = async () => {
     try {
-      const categories = await getAllCategories()
-      setCategoryData(categories)
-      const skills = await getAllSkills()
-      setSkillData(skills)
+      const categories = await getAllCategories();
+      setCategoryData(categories);
+      const skills = await getAllSkills();
+      setSkillData(skills);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchAppInfo()
-  }, [])
+    fetchAppInfo();
+  }, []);
 
   const handleCategoryChange = (event) => {
-    setCategory(event.target.value)
-  }
+    setCategory(event.target.value);
+  };
 
   const handleSkillChange = (event) => {
-    setSkill(event.target.value)
-  }
+    setSkill(event.target.value);
+  };
+
+  const handleQuantityChange = (event) => {
+    setQuantity(event.target.value);
+  };
+
+  const handleSubmitModal = () => {
+    if (category && skill) {
+      const newSkill = {
+        skillId: skill,
+        skillCategoryId: category,
+        quantity: +quantity,
+        publicationId: savePid,
+      };
+      setSkillArray([...skillArray, newSkill]);
+      setCategory("");
+      setSkill("");
+    }
+    console.log(skillArray);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(project)
+      const { data } = await createPublication(userToken, project);
+      console.log(data.publicationId);
+      setSavePid(data.publicationId)
+      console.log(savePid)
+      skillArray.map(async (item) => {
+        console.log(savePid)
+        return await addSkillToPublication(userToken, item, savePid);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <Box
@@ -83,7 +122,7 @@ const CreateProject = () => {
           </Typography>
           <TextField
             label="Nombre del Proyecto"
-            name="projectName"
+            name="name"
             variant="outlined"
             sx={{ width: "100%", mx: "auto", my: 2 }}
             onChange={handleChange}
@@ -91,7 +130,7 @@ const CreateProject = () => {
           <TextField
             label="Descripción del Proyecto"
             variant="outlined"
-            name="projectDescription"
+            name="description"
             fullWidth
             rows={4}
             multiline
@@ -106,6 +145,7 @@ const CreateProject = () => {
             id="demo-simple-select"
             label="Dificultad del proyecto"
             onChange={handleChange}
+            fullWidth
           >
             <MenuItem value={1}>Fácil</MenuItem>
             <MenuItem value={2}>Intermedia</MenuItem>
@@ -113,46 +153,61 @@ const CreateProject = () => {
           </Select>
           <Typography>Agrega un nuevo puesto al proyecto</Typography>
           <CardActions>
-            <ModalPopup modalFunction={handleSubmit}>
-              <DialogActions sx={{ flexDirection: 'column', gap: 2 }}>
-                <Select
-                  labelId='demo-simple-select-label'
-                  id='demo-simple-select'
-                  label='Dificultad del proyecto'
-                  onChange={handleCategoryChange}
-                >
-                  {categoryData?.map((category) => (
-                    <MenuItem
-                      key={category.skillCategoryId}
-                      value={category.skillCategoryId}
-                    >
-                      {category.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-
-                <Select
-                  labelId='demo-simple-select-label'
-                  id='demo-simple-select'
-                  label='Dificultad del proyecto'
-                  onChange={handleSkillChange}
-                >
-                  {skillData
-                    ?.filter((skill) => skill.skillCategoryId === category)
-                    .map((skill) => (
-                      <MenuItem key={skill.skillId} value={skill.skillId}>
-                        {skill.name}
+            <ModalPopup
+              modalFunction={handleSubmitModal}
+              children={
+                <DialogActions sx={{ flexDirection: "column", gap: 2 }}>
+                  <InputLabel id="demo-simple-select-label">
+                    Categoría
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="Categoria"
+                    onChange={handleCategoryChange}
+                    name="skillCategoryId"
+                    fullWidth
+                  >
+                    {categoryData?.map((category) => (
+                      <MenuItem
+                        key={category.skillCategoryId}
+                        value={category.skillCategoryId}
+                      >
+                        {category.name}
                       </MenuItem>
                     ))}
-                </Select>
-                <TextField label='Competencia' select fullWidth>
-                  <MenuItem>Hola</MenuItem>
-                </TextField>
-                <TextField label='Nivel' size='small' select fullWidth>
-                  <MenuItem>Alto xd </MenuItem>
-                </TextField>
-              </DialogActions>
-            </ModalPopup>
+                  </Select>
+
+                  <InputLabel id="demo-simple-select-label">
+                    Habilidad
+                  </InputLabel>
+
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="Dificultad del proyecto"
+                    onChange={handleSkillChange}
+                    name="skillId"
+                    fullWidth
+                  >
+                    {skillData
+                      ?.filter((skill) => skill.skillCategoryId === category)
+                      .map((skill) => (
+                        <MenuItem key={skill.skillId} value={skill.skillId}>
+                          {skill.name}
+                        </MenuItem>
+                      ))}
+                  </Select>
+                  <TextField
+                    label="Cantidad"
+                    variant="outlined"
+                    name="quantity"
+                    fullWidth
+                    onChange={handleQuantityChange}
+                  />
+                </DialogActions>
+              }
+            ></ModalPopup>
           </CardActions>
           <CardActions sx={{ justifyContent: "flex-end", gap: 1 }}>
             <Link to="/createdproject">
@@ -165,7 +220,7 @@ const CreateProject = () => {
         </CardContent>
       </Card>
     </Box>
-  )
-}
+  );
+};
 
-export default CreateProject
+export default CreateProject;

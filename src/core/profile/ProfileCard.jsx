@@ -57,11 +57,6 @@ function ProfileCard() {
     <Card sx={{ width: "90%", height: "80%", my: 4 }}>
       <CardHeader
         title={user.name}
-        action={
-          <Link to="editProfile">
-            <EditIcon fontSize="medium" color="primary" />{" "}
-          </Link>
-        }
         sx={{ fontWeight: "bold" }}
       />
       <CardContent>
